@@ -54,7 +54,7 @@ const Post = ({ post }) => {
     }
   };
   return (
-    <div className="p-2 border rounded-md w-full h-24">
+    <div className="p-2 border rounded-md w-full h-auto">
       <div>
         <h1 className="text-2xl font-semibold">{post.title}</h1>
         <p>{post.content}</p>

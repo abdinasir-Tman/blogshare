@@ -1,4 +1,4 @@
-const Form = ({ setPost, post, handleSubmit, title, content, name }) => {
+const Form = ({ setPost, post, handleSubmit, name }) => {
   return (
     <>
       <h2 className="text-center text-2xl font-semibold text-gray-600">
