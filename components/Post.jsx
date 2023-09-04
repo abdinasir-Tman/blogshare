@@ -31,10 +31,10 @@ const Post = ({ post }) => {
       console.log(e);
     }
   };
-  useEffect(() => {
-    fetchLike(post._id);
-    fetchComment(post._id);
-  }, [post]);
+  // useEffect(() => {
+  //   fetchLike(post._id);
+  //   fetchComment(post._id);
+  // }, []);
 
   //Like the post
   const handleLike = async (frompost) => {

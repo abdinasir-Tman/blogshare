@@ -1,6 +1,6 @@
 "use client";
 import Form from "@/components/Form";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 const page = () => {
@@ -29,7 +29,10 @@ const page = () => {
       router.push("/");
     }
   };
-  if (!session?.user) return router.push("/");
+
+  useEffect(() => {
+    if (!session?.user) return router.push("/");
+  }, []);
   return (
     <section className="max-w-3xl mx-auto my-2">
       <Form
