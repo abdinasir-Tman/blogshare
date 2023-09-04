@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { isModalOpen, updatePosts } from "@/features/postSlice";
+import Image from "next/image";
 
 const Post = ({ post }) => {
   const { data: session } = useSession();
@@ -55,6 +56,15 @@ const Post = ({ post }) => {
   };
   return (
     <div className="p-2 border rounded-md w-full h-auto">
+      <div className="flex gap-3 justify-center items-center">
+        <Image
+          src={post.author.image}
+          width={33}
+          height={33}
+          className="rounded-full"
+        />
+        <span className="text-xl text-gray-500">{post.author.username}</span>
+      </div>
       <div>
         <h1 className="text-2xl font-semibold">{post.title}</h1>
         <p>{post.content}</p>
