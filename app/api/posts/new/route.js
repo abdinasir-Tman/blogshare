@@ -27,10 +27,13 @@ export const GET = async (req) => {
     const posts = await UserPost.find({})
       .populate("author")
       .populate("likes")
-      .populate("comments")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+        },
+      })
       .exec();
-
-    console.log("posts", posts);
 
     return new Response(JSON.stringify(posts), { status: 200 });
   } catch (e) {
