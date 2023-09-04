@@ -1,4 +1,4 @@
-import Comment from "@/models/comment";
+import { Comment } from "@/models/models";
 import { ConnectToDb } from "@/util/database";
 
 export const GET = async (req, { params }) => {

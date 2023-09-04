@@ -1,4 +1,4 @@
-import Like from "@/models/like";
+import { Like } from "@/models/models";
 import { ConnectToDb } from "@/util/database";
 
 // Read Liked Posts

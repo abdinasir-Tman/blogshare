@@ -31,6 +31,15 @@ const Nav = () => {
           Logo
         </Link>
         <ul className="flex items-center justify-center gap-4">
+          <button
+            onClick={() => {
+              signOut();
+              // setIsLoggedin(false);
+            }}
+            className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white"
+          >
+            Sign Out
+          </button>
           {session?.user ? (
             <>
               <Link href="posts/new-post">
@@ -41,7 +50,7 @@ const Nav = () => {
               <button
                 onClick={() => {
                   signOut();
-                  setIsLoggedin(false);
+                  // setIsLoggedin(false);
                 }}
                 className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white"
               >

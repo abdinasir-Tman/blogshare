@@ -13,5 +13,5 @@ const commentSchema = new Schema({
     type: String,
   },
 });
-const Comment = models.Comment || model("Comment", commentSchema);
-export default Comment;
+// const Comment = models.Comment || model("Comment", commentSchema);
+export default commentSchema;

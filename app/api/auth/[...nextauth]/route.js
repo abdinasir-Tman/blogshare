@@ -23,10 +23,13 @@ const handler = NextAuth({
       try {
         await ConnectToDb();
         const existUser = await User.findOne({ email: profile.email });
+
+        console.log("profile", profile);
+
         if (!existUser) {
           await User.create({
             email: profile.email,
-            username: profile.username.replace(" ", "").toLowerCase(),
+            username: profile.name ? profile.name : "Unkown",
             image: profile.picture,
           });
         }

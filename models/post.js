@@ -13,6 +13,20 @@ const PostSchema = new Schema({
 
     ref: "User",
   },
+  likes: [
+    {
+      type: Schema.ObjectId,
+
+      ref: "Like",
+    },
+  ],
+  comments: [
+    {
+      type: Schema.ObjectId,
+
+      ref: "Comment",
+    },
+  ],
 });
-const UserPost = models.UserPost || model("UserPost", PostSchema);
-export default UserPost;
+// const UserPost = models.UserPost || model("UserPost", PostSchema);
+export default PostSchema;

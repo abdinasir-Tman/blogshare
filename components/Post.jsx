@@ -4,13 +4,13 @@ import { BiLike } from "react-icons/bi";
 import { AiTwotoneLike } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useSession } from "next-auth/react";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { isModalOpen, updatePosts } from "@/features/postSlice";
 
 const Post = ({ post }) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
-
+  const [updated, setUpdated] = useState(false);
   const fetchComment = async (id) => {
     try {
       const response = await fetch(`/api/comment/${id}`);

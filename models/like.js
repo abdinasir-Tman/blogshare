@@ -15,5 +15,5 @@ const LikeSchema = new Schema({
     ref: "UserPost",
   },
 });
-const Like = models.Like || model("Like", LikeSchema);
-export default Like;
+// const Like = models.Like || model("Like", LikeSchema);
+export default LikeSchema;
