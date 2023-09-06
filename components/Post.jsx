@@ -78,6 +78,9 @@ const Post = ({ post, fetchPosts }) => {
           className="flex cursor-pointer text-base items-center justify-center"
         >
           <>
+            {console.log(
+              post.likes?.filter((like) => like.userposted === session.user.id)
+            )}
             <AiTwotoneLike
               className={`text-2xl ${
                 session?.user.id &&
