@@ -6,7 +6,7 @@ import { LuSend } from "react-icons/lu";
 
 import Modal from "react-modal";
 import { useDispatch, useSelector } from "react-redux";
-const PostModal = () => {
+const PostModal = ({ fetchPosts }) => {
   const { comment, currentPost, isModal } = useSelector(
     (store) => store.postState
   );
@@ -18,16 +18,16 @@ const PostModal = () => {
   }
   //Reading comment
 
-  const fetchComment = async (id) => {
-    try {
-      const response = await fetch(`/api/comment/${id}`);
-      const { comments } = await response.json();
+  // const fetchComment = async (id) => {
+  //   try {
+  //     const response = await fetch(`/api/comment/${id}`);
+  //     const { comments } = await response.json();
 
-      dispatch(updatePosts({ postId: id, name: "comments", data: comments }));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     dispatch(updatePosts({ postId: id, name: "comments", data: comments }));
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   function afterOpenModal() {
     // references are now sync'd and can be accessed.
     // subtitle.style.color = "#f00";
@@ -45,7 +45,7 @@ const PostModal = () => {
       });
       // fetchComment()
       const data = await response.json();
-      fetchComment(currentPost._id);
+      fetchPosts();
 
       dispatch(updateState({ name: "comment", value: "" }));
     } catch (e) {

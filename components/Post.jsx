@@ -8,30 +8,30 @@ import { useEffect, useState } from "react";
 import { isModalOpen, updatePosts } from "@/features/postSlice";
 import Image from "next/image";
 
-const Post = ({ post }) => {
+const Post = ({ post, fetchPosts }) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const [updated, setUpdated] = useState(false);
-  const fetchComment = async (id) => {
-    try {
-      const response = await fetch(`/api/comment/${id}`);
-      const { comments } = await response.json();
+  // const fetchComment = async (id) => {
+  //   try {
+  //     const response = await fetch(`/api/comment/${id}`);
+  //     const { comments } = await response.json();
 
-      dispatch(updatePosts({ postId: id, name: "comments", data: comments }));
-    } catch (e) {
-      console.log(e);
-    }
-  };
-  const fetchLike = async (id) => {
-    try {
-      const response = await fetch(`/api/like/${id}`);
-      const data = await response.json();
+  //     dispatch(updatePosts({ postId: id, name: "comments", data: comments }));
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
+  // const fetchLike = async (id) => {
+  //   try {
+  //     const response = await fetch(`/api/like/${id}`);
+  //     const data = await response.json();
 
-      dispatch(updatePosts({ postId: id, name: "likes", data }));
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  //     dispatch(updatePosts({ postId: id, name: "likes", data }));
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
   // useEffect(() => {
   //   fetchLike(post._id);
   //   fetchComment(post._id);
@@ -49,7 +49,8 @@ const Post = ({ post }) => {
         }),
       });
       const data = await response.json();
-      fetchLike(post._id);
+      // fetchLike(post._id);
+      fetchPosts();
     } catch (e) {
       console.log(e);
     }
@@ -79,7 +80,12 @@ const Post = ({ post }) => {
           <>
             <AiTwotoneLike
               className={`text-2xl ${
-                post.likes?.length > 0 ? "text-gray-900" : "text-gray-400"
+                session?.user.id &&
+                post.likes?.filter(
+                  (like) => like.userposted === session.user.id
+                )
+                  ? "text-gray-900"
+                  : "text-gray-400"
               } transition-colors duration-200`}
             />
             {post.likes?.length}

@@ -14,17 +14,17 @@ const Posts = () => {
   const dispatch = useDispatch();
 
   // Fetchign posts
-  useEffect(() => {
-    const fetchPosts = async () => {
-      try {
-        const response = await fetch("/api/posts/new");
-        const data = await response.json();
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch("/api/posts/new");
+      const data = await response.json();
 
-        dispatch(updateState({ name: "posts", value: data }));
-      } catch (e) {
-        console.log("error jira ", e);
-      }
-    };
+      dispatch(updateState({ name: "posts", value: data }));
+    } catch (e) {
+      console.log("error jira ", e);
+    }
+  };
+  useEffect(() => {
     fetchPosts();
   }, []);
 
@@ -34,10 +34,10 @@ const Posts = () => {
         <div key={post._id}>
           {/* {setTimeout(() => fetchLike(post._id), 1000)} */}
 
-          <Post post={post} />
+          <Post post={post} fetchPosts={fetchPosts} />
         </div>
       ))}
-      <PostModal />
+      <PostModal fetchPosts={fetchPosts} />
     </div>
   );
 };
