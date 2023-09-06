@@ -81,6 +81,7 @@ const Post = ({ post, fetchPosts }) => {
             {console.log(
               "is this ",
               post.likes?.filter((like) => like.userposted === session.user.id)
+                .length > 0
             )}
             <AiTwotoneLike
               className={`text-2xl ${
