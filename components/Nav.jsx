@@ -41,7 +41,7 @@ const Nav = () => {
               <button
                 onClick={() => {
                   signOut();
-                  setIsLoggedin(false);
+                  setIsLoggedin(!isLoggedin);
                 }}
                 className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white"
               >
@@ -65,7 +65,7 @@ const Nav = () => {
                     key={provider.name}
                     onClick={() => {
                       signIn(provider.id);
-                      setIsLoggedin(true);
+                      setIsLoggedin(isLoggedin);
                     }}
                     className="bg-gray-600 text-white hover:bg-white py-1 px-3 hover:text-gray-500 border rounded-md"
                   >
