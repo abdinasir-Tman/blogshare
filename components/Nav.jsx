@@ -12,7 +12,7 @@ const Nav = () => {
   const getProfile = () => {
     router.push(`/profile/user-profile?id=${session?.user.id}`);
   };
-  session?.user && setIsLoggedin(true);
+
   useEffect(() => {
     const fetchProviders = async () => {
       try {
@@ -31,6 +31,7 @@ const Nav = () => {
         <Link href="/" className="text-2xl text-gray-600">
           Logo
         </Link>
+        {session?.user && setIsLoggedin(true)}
         <ul className="flex items-center justify-center gap-4">
           {isLoggedin ? (
             <>
