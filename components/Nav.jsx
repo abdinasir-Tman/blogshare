@@ -33,6 +33,7 @@ const Nav = () => {
         <ul className="flex items-center justify-center gap-4">
           {isLoggedin ? (
             <>
+              {console.log(isLoggedin, "markuu true yahay ")}
               <Link href="posts/new-post">
                 <button className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white">
                   Create Post
@@ -41,7 +42,7 @@ const Nav = () => {
               <button
                 onClick={() => {
                   signOut();
-                  setIsLoggedin(!isLoggedin);
+                  setIsLoggedin(false);
                 }}
                 className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white"
               >
@@ -65,7 +66,7 @@ const Nav = () => {
                     key={provider.name}
                     onClick={() => {
                       signIn(provider.id);
-                      setIsLoggedin(!isLoggedin);
+                      setIsLoggedin(true);
                     }}
                     className="bg-gray-600 text-white hover:bg-white py-1 px-3 hover:text-gray-500 border rounded-md"
                   >
