@@ -79,6 +79,7 @@ const Post = ({ post, fetchPosts }) => {
         >
           <>
             {console.log(
+              "is this ",
               post.likes?.filter((like) => like.userposted === session.user.id)
             )}
             <AiTwotoneLike
@@ -86,7 +87,7 @@ const Post = ({ post, fetchPosts }) => {
                 session?.user.id &&
                 post.likes?.filter(
                   (like) => like.userposted === session.user.id
-                ) &&
+                ).length > 0 &&
                 post.likes.length > 0
                   ? "text-gray-900"
                   : "text-gray-400"
