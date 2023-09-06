@@ -12,6 +12,7 @@ const Nav = () => {
   const getProfile = () => {
     router.push(`/profile/user-profile?id=${session?.user.id}`);
   };
+  session?.user && setIsLoggedin(true);
   useEffect(() => {
     const fetchProviders = async () => {
       try {
@@ -23,7 +24,6 @@ const Nav = () => {
       }
     };
     fetchProviders();
-    session?.user && setIsLoggedin(true);
   }, []);
   return (
     <div className="max-w-3xl mx-auto p-2">
