@@ -31,7 +31,7 @@ const Nav = () => {
           Logo
         </Link>
         <ul className="flex items-center justify-center gap-4">
-          {session?.user ? (
+          {isLoggedin ? (
             <>
               <Link href="posts/new-post">
                 <button className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white">
@@ -41,7 +41,7 @@ const Nav = () => {
               <button
                 onClick={() => {
                   signOut();
-                  // setIsLoggedin(false);
+                  setIsLoggedin(false);
                 }}
                 className="bg-white text-gray-600 border rounded-lg py-2 px-3 hover:bg-black hover:text-white"
               >
@@ -63,7 +63,10 @@ const Nav = () => {
                 Object.values(providers).map((provider) => (
                   <button
                     key={provider.name}
-                    onClick={() => signIn(provider.id)}
+                    onClick={() => {
+                      signIn(provider.id);
+                      setIsLoggedin(true);
+                    }}
                     className="bg-gray-600 text-white hover:bg-white py-1 px-3 hover:text-gray-500 border rounded-md"
                   >
                     Sing in
