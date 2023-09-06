@@ -83,7 +83,8 @@ const Post = ({ post, fetchPosts }) => {
                 session?.user.id &&
                 post.likes?.filter(
                   (like) => like.userposted === session.user.id
-                )
+                ) &&
+                post.likes.length > 0
                   ? "text-gray-900"
                   : "text-gray-400"
               } transition-colors duration-200`}
