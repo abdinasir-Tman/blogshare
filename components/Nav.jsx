@@ -65,7 +65,7 @@ const Nav = () => {
                     key={provider.name}
                     onClick={() => {
                       signIn(provider.id);
-                      setIsLoggedin(isLoggedin);
+                      setIsLoggedin(!isLoggedin);
                     }}
                     className="bg-gray-600 text-white hover:bg-white py-1 px-3 hover:text-gray-500 border rounded-md"
                   >
