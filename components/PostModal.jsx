@@ -60,7 +60,7 @@ const PostModal = ({ fetchPosts }) => {
         onRequestClose={closeModal}
         // style={customStyles}
         contentLabel="Example Modal"
-        className="shadow-lg fixed bg-white p-4 rounded-md top-10 left-40 right-40 bottom-20"
+        className="shadow-lg fixed bg-white p-4 rounded-md top-0 left-0 right-0 md:right-10 md:left-10 md:top-10 lg:left-20 lg:right-20 lg:top-20 bottom-20"
       >
         {/* <h2
           ref={(_subtitle) => (subtitle = _subtitle)}
